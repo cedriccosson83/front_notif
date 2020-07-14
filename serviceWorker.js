@@ -1,5 +1,6 @@
 self.addEventListener('push', function (e) {
-    var options = {
+
+    const promise = self.registration.showNotification('Astuce RGPD', {
         body: 'Pour protéger vos données arretez de mettre le nom de votre animal de compagnie en mot de passe',
         icon: 'images/icon.png',
         vibrate: [100, 50, 100],
@@ -17,8 +18,6 @@ self.addEventListener('push', function (e) {
                 icon: 'images/xmark.png'
             },
         ]
-    };
-    e.waitUntil(
-        self.registration.showNotification('Astuce RGPD', options)
-    );
+    });
+    e.waitUntil(promise);
 });
