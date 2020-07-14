@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>test</title>
+    </head>
+    <body>
+        <button onclick="subscribe">S'inscrire</button>
+
+        <script>
+            addEventListener("load", async() => {
+                let serviceWorkers = await navigator.serviceWorker.register("serviceWorker.js")
+                console.log(serviceWorkers);
+            })
+
+            
+
+            async function subscribe() { 
+                let serviceWorkers = await navigator.serviceWorker.ready;
+                let push = await serviceWorkers.pushManager.subscribe({
+                    userVisibleOnly:true,
+                    applicationServerKey: "BJjQgg1oiByCeljKIr5jJxOtA2grQsUh7mINCrRnSwPT3K0dGmgdjZrwHMaiSgqpdNCQ0zQYGuO3gEZzrQzp9vs"
+                })
+
+                console.log(JSON.stringify(push));
+             }
+        </script>
+    </body>
+</html>
